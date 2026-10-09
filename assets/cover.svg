@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <rect x="0" y="0" width="1000" height="420" fill="#0d1117"/>
+  <rect x="0" y="0" width="1000" height="4" fill="#f778ba"/>
+
+  <text x="56" y="138" font-size="36" font-weight="700" fill="#e6edf3">trickle<tspan fill="#f778ba">-structured</tspan></text>
+  <text x="58" y="178" font-size="17" fill="#c9d1d9">Stream a typed object out of an LLM</text>
+  <text x="58" y="206" font-size="14" fill="#8b949e">sse-wire → trickle-json → coerce-json</text>
+
+  <g font-size="14" fill="#c9d1d9">
+    <rect x="56" y="240" width="112" height="32" rx="16" fill="#161b22" stroke="#30363d"/>
+    <text x="112" y="261" text-anchor="middle">live partials</text>
+    <rect x="178" y="240" width="108" height="32" rx="16" fill="#161b22" stroke="#30363d"/>
+    <text x="232" y="261" text-anchor="middle">validated</text>
+    <rect x="296" y="240" width="84" height="32" rx="16" fill="#161b22" stroke="#30363d"/>
+    <text x="338" y="261" text-anchor="middle">~1.2 kB</text>
+  </g>
+
+  <text x="58" y="330" font-size="17"><tspan fill="#f778ba">$</tspan> <tspan fill="#c9d1d9">npm install trickle-structured</tspan></text>
+
+  <rect x="512" y="52" width="432" height="316" rx="12" fill="#010409" stroke="#30363d" stroke-width="1"/>
+  <rect x="512" y="52" width="432" height="38" rx="12" fill="#161b22"/>
+  <rect x="512" y="78" width="432" height="12" fill="#161b22"/>
+  <circle cx="534" cy="71" r="5.5" fill="#ff5f56"/>
+  <circle cx="553" cy="71" r="5.5" fill="#ffbd2e"/>
+  <circle cx="572" cy="71" r="5.5" fill="#27c93f"/>
+  <text x="728" y="76" text-anchor="middle" font-size="12" fill="#8b949e">streaming structured output</text>
+
+  <text x="532" y="124" font-size="13" fill="#6e7681">// one call, two surfaces</text>
+  <text x="532" y="150" font-size="14" fill="#f778ba">const s = structured(req, Schema)</text>
+
+  <text x="532" y="186" font-size="13"><tspan fill="#8b949e">for await (const p of s)</tspan><tspan fill="#6e7681"> // partials</tspan></text>
+  <text x="552" y="212" font-size="13"><tspan fill="#c9d1d9">{ id: 42, name: "Ad</tspan><tspan fill="#f778ba">▌</tspan><tspan fill="#c9d1d9">" }</tspan></text>
+  <text x="552" y="236" font-size="13"><tspan fill="#c9d1d9">{ id: 42, name: "Ada", active: tr</tspan></text>
+
+  <text x="532" y="276" font-size="13"><tspan fill="#8b949e">const v = await s.value</tspan></text>
+  <text x="532" y="302" font-size="13"><tspan fill="#3fb950">✓</tspan><tspan fill="#c9d1d9"> { id: 42, name: "Ada", active: true }</tspan></text>
+  <text x="532" y="332" font-size="13"><tspan fill="#6e7681">typed · validated · repaired if needed</tspan></text>
+</svg>

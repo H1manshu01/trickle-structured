@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="430" viewBox="0 0 720 430" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" role="img" aria-label="trickle-structured streaming a typed object out of an LLM, partials filling in then a validated value">
+  <defs>
+    <style>
+      .fn   { fill: #f778ba; }
+      .p    { fill: #8b949e; }
+      .c    { fill: #6e7681; }
+      .ok   { fill: #3fb950; }
+      .v    { fill: #c9d1d9; }
+      .t    { font-size: 14px; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="720" height="430" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <rect x="0" y="0" width="720" height="40" rx="12" fill="#161b22"/>
+  <rect x="0" y="28" width="720" height="12" fill="#161b22"/>
+  <circle cx="22" cy="20" r="6" fill="#ff5f56"/>
+  <circle cx="44" cy="20" r="6" fill="#ffbd2e"/>
+  <circle cx="66" cy="20" r="6" fill="#27c93f"/>
+  <text x="360" y="25" text-anchor="middle" font-size="13" fill="#8b949e">streaming structured output</text>
+
+  <rect width="0" height="0">
+    <animate id="loop" attributeName="width" begin="0s;loop.end" dur="8.2s" values="0;0"/>
+  </rect>
+
+  <g opacity="0">
+    <animate attributeName="opacity" begin="loop.begin+0.2s" dur="0.2s" to="1" fill="freeze"/>
+    <animate attributeName="opacity" begin="loop.begin+7.8s" dur="0.2s" to="0" fill="freeze"/>
+    <text class="t c" x="28" y="82">// sse-wire → trickle-json → coerce-json</text>
+    <text class="t fn" x="28" y="110">const s = structured(request, User)</text>
+  </g>
+
+  <g opacity="0">
+    <animate attributeName="opacity" begin="loop.begin+1.2s" dur="0.2s" to="1" fill="freeze"/>
+    <animate attributeName="opacity" begin="loop.begin+7.8s" dur="0.2s" to="0" fill="freeze"/>
+    <text class="t p" x="28" y="150">for await (const p of s)  <tspan class="c">// partials as tokens arrive</tspan></text>
+  </g>
+
+  <g opacity="0">
+    <animate attributeName="opacity" begin="loop.begin+2.0s" dur="0.2s" to="1" fill="freeze"/>
+    <animate attributeName="opacity" begin="loop.begin+7.8s" dur="0.2s" to="0" fill="freeze"/>
+    <text class="t v" x="48" y="182">{ id: 42 }</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" begin="loop.begin+2.7s" dur="0.2s" to="1" fill="freeze"/>
+    <animate attributeName="opacity" begin="loop.begin+7.8s" dur="0.2s" to="0" fill="freeze"/>
+    <text class="t v" x="48" y="208">{ id: 42, name: "Ad<tspan class="fn">▌</tspan>" }</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" begin="loop.begin+3.5s" dur="0.2s" to="1" fill="freeze"/>
+    <animate attributeName="opacity" begin="loop.begin+7.8s" dur="0.2s" to="0" fill="freeze"/>
+    <text class="t v" x="48" y="234">{ id: 42, name: "Ada", active: tr</text>
+  </g>
+
+  <g opacity="0">
+    <animate attributeName="opacity" begin="loop.begin+4.6s" dur="0.2s" to="1" fill="freeze"/>
+    <animate attributeName="opacity" begin="loop.begin+7.8s" dur="0.2s" to="0" fill="freeze"/>
+    <text class="t p" x="28" y="276">const v = await s.value  <tspan class="c">// validated at the end</tspan></text>
+  </g>
+
+  <g opacity="0">
+    <animate attributeName="opacity" begin="loop.begin+5.6s" dur="0.2s" to="1" fill="freeze"/>
+    <animate attributeName="opacity" begin="loop.begin+7.8s" dur="0.2s" to="0" fill="freeze"/>
+    <text class="t" x="48" y="308"><tspan class="ok">✓ </tspan><tspan class="v">{ id: 42, name: "Ada", active: true }</tspan></text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" begin="loop.begin+6.4s" dur="0.2s" to="1" fill="freeze"/>
+    <animate attributeName="opacity" begin="loop.begin+7.8s" dur="0.2s" to="0" fill="freeze"/>
+    <text class="t c" x="48" y="334">typed · schema-validated · repaired if the model slips</text>
+  </g>
+
+  <rect x="28" y="360" width="9" height="18" fill="#f778ba">
+    <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.5;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+  <text class="t c" x="44" y="374">one stream, consumed as partials and as a final value</text>
+</svg>

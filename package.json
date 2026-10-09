@@ -1,0 +1,97 @@
+{
+  "name": "trickle-structured",
+  "version": "0.1.0",
+  "description": "Stream a typed, schema-validated object out of an LLM response — one call wires an SSE stream to incremental JSON parsing and schema coercion, yielding deep-partial snapshots as tokens arrive and a final validated value when the stream ends. Framework-agnostic, OpenAI/Anthropic envelopes built in.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Himanshu Sharma",
+  "sideEffects": false,
+  "keywords": [
+    "llm",
+    "ai",
+    "structured-output",
+    "streaming",
+    "sse",
+    "json",
+    "partial-json",
+    "schema",
+    "zod",
+    "coerce",
+    "openai",
+    "anthropic",
+    "tool-calls",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/H1manshu01/trickle-structured.git"
+  },
+  "homepage": "https://github.com/H1manshu01/trickle-structured#readme",
+  "bugs": {
+    "url": "https://github.com/H1manshu01/trickle-structured/issues"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "size": "size-limit",
+    "smoke": "node scripts/smoke.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "coerce-json": "^0.1.0",
+    "sse-wire": "^0.1.0",
+    "trickle-json": "^0.1.1"
+  },
+  "peerDependencies": {
+    "zod": ">=3.22.0"
+  },
+  "peerDependenciesMeta": {
+    "zod": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@size-limit/preset-small-lib": "^11.1.6",
+    "@types/node": "^22.20.5",
+    "fast-check": "^3.23.2",
+    "size-limit": "^11.1.6",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.7.2",
+    "vitest": "^4.1.11",
+    "zod": "^3.23.8"
+  },
+  "overrides": {
+    "esbuild": "^0.28.2",
+    "vite": "^6.4.4"
+  },
+  "size-limit": [
+    {
+      "name": "core (structured orchestration, deps external)",
+      "path": "dist/index.js",
+      "limit": "2.5 kB",
+      "ignore": ["sse-wire", "trickle-json", "coerce-json", "zod"]
+    }
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
