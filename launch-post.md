@@ -1,10 +1,11 @@
 ---
 title: "One call, from fetch to a validated object — streaming structured output without the plumbing"
-published: false
+published: true
 description: "Streaming a typed object out of an LLM means wiring three awkward steps: read the SSE envelope, parse JSON that's broken until the last token, then validate and repair the result. Here's trickle-structured — one framework-agnostic call that does all three, yielding typed partials as tokens arrive and a validated value at the end."
 tags: typescript, ai, javascript, opensource
 series: "Streaming structured output"
 cover_image: https://raw.githubusercontent.com/H1manshu01/trickle-structured/main/assets/cover.png
+canonical_url: https://dev.to/h1manshu01/one-call-from-fetch-to-a-validated-object-streaming-structured-output-without-the-plumbing-2jko
 ---
 
 You asked the model for a JSON object and set `stream: true`, because you want the UI (or the next step) to start the moment the first field lands instead of blocking on the last token. Then you're here:
