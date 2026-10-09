@@ -36,7 +36,7 @@ Three separate problems are tangled together in that loop:
 
 1. **The transport.** SSE framing by hand — splitting on newlines, handling a frame split across two network chunks, skipping `[DONE]`.
 2. **The partial parse.** `JSON.parse(json)` throws on every chunk until the object is complete, so you get nothing to render in the meantime.
-3. **The validation.** At the end you still have to validate — and models emit trailing commas, wrap JSON in ` ```json ` fences, and send `"true"` where you wanted `true`, so a strict `.parse()` rejects output that's *almost* right.
+3. **The validation.** At the end you still have to validate — and models emit trailing commas, wrap JSON in Markdown code fences, and send `"true"` where you wanted `true`, so a strict `.parse()` rejects output that's *almost* right.
 
 Each of those is a small, well-defined job. I built one tiny zero-dependency package for each — and then one more that wires them together.
 
@@ -52,7 +52,7 @@ const stream = structured(
   {
     url: "https://api.openai.com/v1/chat/completions",
     method: "POST",
-    headers: { authorization: "Bearer " + key, "content-type": "application/json" },
+    headers: { authorization: `Bearer ${key}`, "content-type": "application/json" },
     body: JSON.stringify({
       model: "gpt-4o",
       stream: true,
