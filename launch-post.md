@@ -52,7 +52,7 @@ const stream = structured(
   {
     url: "https://api.openai.com/v1/chat/completions",
     method: "POST",
-    headers: { authorization: `Bearer ${key}`, "content-type": "application/json" },
+    headers: { authorization: "Bearer " + key, "content-type": "application/json" },
     body: JSON.stringify({
       model: "gpt-4o",
       stream: true,
